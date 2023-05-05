@@ -36,4 +36,12 @@ describe("Central de Atendimento Ao Cliente TAT", () => {
     cy.get('.error').should('contain', 'Valide os campos obrigatórios!');
   });
 
+  if("preenche e limpa os campos nome, sobrenome, email e telefone", function(){  //estudando como funciona o .clear()
+    cy.get("#firstName").type('a',{delay: 0}).should('have.value','a').clear().should('have.value','');
+    cy.get("#lastName").type(faker.name.lastName(), {delay: 0}).clear().should('have.value','');
+    cy.get("#email").type(faker.internet.email(), {delay: 0}).clear().should('have.value','');
+    cy.get("#phone").type(faker.phone.number(), {delay: 0}).clear().should('have.value','');
+
+  });
+
 });
