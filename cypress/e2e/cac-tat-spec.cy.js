@@ -49,4 +49,8 @@ describe("Central de Atendimento Ao Cliente TAT", () => {
     cy.get('.error').should('contain', 'Valide os campos obrigatórios!');
   });
 
+  it("envia um formulario com sucesso usando um comando customizado", function(){
+    cy.fillMandatoryFieldsAndSubmit();
+  }); 
+
 });
