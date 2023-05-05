@@ -31,7 +31,9 @@ describe("Central de Atendimento Ao Cliente TAT", () => {
     cy.get("#firstName").type(faker.name.firstName(),{delay: 0});
     cy.get("#lastName").type(faker.name.lastName(), {delay: 0});
     cy.get('#phone-checkbox').click();
-    cy.get('button[type="submit"]').click();
+    cy.contains("button","Enviar").click(); //busca um botao com o txt "enviar" e clica nele
+    //melhor usar isso pra evitar ser mto especifico e poder usar em varias paginas, mas tem que ter cuidado pra nao clicar em outro botao com o mesmo texto
+
     cy.get('.error').should('be.visible');
     cy.get('.error').should('contain', 'Valide os campos obrigatórios!');
   });
@@ -52,5 +54,7 @@ describe("Central de Atendimento Ao Cliente TAT", () => {
   it("envia um formulario com sucesso usando um comando customizado", function(){
     cy.fillMandatoryFieldsAndSubmit();
   }); 
+
+  
 
 });
